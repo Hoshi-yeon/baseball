@@ -9,14 +9,15 @@ while (arr.length < 3){    // 상수 arr 값의 길이가 3보다 작은동안, 
     }
 }
 
+console.log(arr);
 // console.log(typeof num2);  // string 값으로 받음
 // console.log(num2.split(''));   // string 값을 array로 변환
 
 let result = 0;
-let num2 = prompt('신나는 숫자 야구게임~~'); // 사용자가 입력하는 값;
-let box = document.getElementsByClassName('box');
+// let num2 = prompt('신나는 숫자 야구게임~~'); // 사용자가 입력하는 값;
 
-while (true) {
+function num(){
+    let num2 = document.getElementById('textResult').value;
     result++;  // 시도한 값 추가
     const arr2 = num2.split('');   // 사용자가 입력한 값을 string 배열로 변환
     let ball = 0;   // 숫자 값
@@ -29,10 +30,24 @@ while (true) {
         }
     }
     // alert(ball+'B'+strike+'S');
+    const main1 = document.getElementsByClassName('mainBox1')[0];
+    const main2 = document.getElementsByClassName('mainBox2')[0];
+
+    const newTag1 = document.createElement('li');
+    newTag1.innerText = num2;
+    main1.appendChild(newTag1);
+
+    const newTag = document.createElement('li');
+    newTag.innerText = `${ball}B ${strike}S`;
+    main2.appendChild(newTag);
+
     if(strike === 3){     // 위에서 추가한 strike 값이 3이 되었을 때
         alert(`${result}번만에 성공함ㅊㅊ`);    // 알림창으로 총 시도한 값을 표기, 
         alert('게임 종료!');  // 게임 종료 선언
-        break;   // while문 빠져 나오기
+        document.getElementById('reset').value = '다시하기';
     }
-    num2 = prompt(`${ball}B ${strike}S`);   // 위 for문에서 시도한 수만큼 숫자 표기 및 맞출 때까지 반복
 }
+
+// while (true) {
+    // num2 = prompt(`${ball}B ${strike}S`);   // 위 for문에서 시도한 수만큼 숫자 표기 및 맞출 때까지 반복
+// }
