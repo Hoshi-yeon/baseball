@@ -8,6 +8,7 @@ while (arr.length < 3){     // 배열 arr의 길이가 3보다 작거나 같을 
 }
 let result = 0;    // 정답 시도 함수생성
 
+// console.log(arr);
 
 function num(){
     let num2 = document.getElementById('textResult').value;      // html 코드 중 input의 value 값을 num2에 저장
@@ -24,6 +25,7 @@ function num(){
     }
     const main1 = document.getElementsByClassName('mainBox1')[0];  
     const main2 = document.getElementsByClassName('mainBox2')[0];
+    const chk = document.getElementById('reset');
 
     const newTag1 = document.createElement('li');
     newTag1.innerText = num2;
@@ -36,12 +38,9 @@ function num(){
     if(strike === 3){
         alert(`${result}번 만에 성공함ㅊㅊ`);
         alert('게임 종료!');
+        chk.setAttribute("onClick", "resetBtn()");
         document.getElementById('reset').value = '다시하기';
-    }
-
-    const chk = document.getElementById('reset');
-
-    chk.setAttribute("onClick", "resetBtn()");
+    }    
 }
 
 function resetBtn(){
