@@ -19,33 +19,34 @@ function num(){
 
     if(num2.length > 3){
         alert('서로 겹치지 않는 세자리 숫자로 입력해주세요.');
-    }
-
-    for(let i = 0; i < 3; i++){
-        if(arr[i] == arr2[i]){   // 처음 뽑은 랜덤 숫자 arr의 i번째와 사용자가 입력한 arr2의 i번째의 숫자가 위치까지 맞을 때 
-            strike++;  // strike +1
-        } else if(arr.indexOf(Number(arr2[i])) !== -1){     // 사용자가 입력한 arr2의 i번째 값을 number 속성으로 변환하고, 처음 뽑은 랜덤 숫자 arr 배열에 있는지 확인해봤을 때 있다면
-            ball++;   // ball +1
+    } else{
+        for(let i = 0; i < 3; i++){
+            if(arr[i] == arr2[i]){   // 처음 뽑은 랜덤 숫자 arr의 i번째와 사용자가 입력한 arr2의 i번째의 숫자가 위치까지 맞을 때 
+                strike++;  // strike +1
+            } else if(arr.indexOf(Number(arr2[i])) !== -1){     // 사용자가 입력한 arr2의 i번째 값을 number 속성으로 변환하고, 처음 뽑은 랜덤 숫자 arr 배열에 있는지 확인해봤을 때 있다면
+                ball++;   // ball +1
+            }
         }
+        const main1 = document.getElementsByClassName('mainBox1')[0];  
+        const main2 = document.getElementsByClassName('mainBox2')[0];
+        const chk = document.getElementById('reset');
+    
+        const newTag1 = document.createElement('li');
+        newTag1.innerText = num2;
+        main1.appendChild(newTag1);
+    
+        const newTag = document.createElement('li');
+        newTag.innerText = `${ball}B ${strike}S`;
+        main2.appendChild(newTag);
+    
+        if(strike === 3){
+            alert(`${result}번 만에 성공함ㅊㅊ`);
+            alert('게임 종료!');
+            chk.setAttribute("onClick", "resetBtn()");
+            document.getElementById('reset').value = '다시하기';
+        }    
     }
-    const main1 = document.getElementsByClassName('mainBox1')[0];  
-    const main2 = document.getElementsByClassName('mainBox2')[0];
-    const chk = document.getElementById('reset');
 
-    const newTag1 = document.createElement('li');
-    newTag1.innerText = num2;
-    main1.appendChild(newTag1);
-
-    const newTag = document.createElement('li');
-    newTag.innerText = `${ball}B ${strike}S`;
-    main2.appendChild(newTag);
-
-    if(strike === 3){
-        alert(`${result}번 만에 성공함ㅊㅊ`);
-        alert('게임 종료!');
-        chk.setAttribute("onClick", "resetBtn()");
-        document.getElementById('reset').value = '다시하기';
-    }    
 }
 
 function resetBtn(){
