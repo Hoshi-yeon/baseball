@@ -8,7 +8,7 @@ while (arr.length < 3){     // 배열 arr의 길이가 3보다 작거나 같을 
 }
 let result = 0;    // 정답 시도 함수생성
 
-// console.log(arr);
+console.log(arr);
 
 function num(){
     let num2 = document.getElementById('textResult').value;      // html 코드 중 input의 value 값을 num2에 저장
@@ -16,6 +16,11 @@ function num(){
     const arr2 = num2.split('');    // arr2 함수에 num2값을 배열로 변환
     let ball = 0; 
     let strike = 0;
+
+    if(num2.length > 3){
+        alert('서로 겹치지 않는 세자리 숫자로 입력해주세요.');
+    }
+
     for(let i = 0; i < 3; i++){
         if(arr[i] == arr2[i]){   // 처음 뽑은 랜덤 숫자 arr의 i번째와 사용자가 입력한 arr2의 i번째의 숫자가 위치까지 맞을 때 
             strike++;  // strike +1
